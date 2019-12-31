@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -81,6 +82,20 @@ public class ProductController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    //Calcul de la marge
+    @GetMapping(value = "/AdminProduits")
+    public HashMap<String, Integer> calculerMargeProduit(){
+        List<Product> Listproduits = productDao.findAll();
+        HashMap<String, Integer> res = new HashMap<String, Integer>();
+
+        for(Product product: Listproduits) {
+            int marge = product.getPrix() - product.getPrixAchat();
+            res.put(product.toString(), marge);
+        }
+
+        return res;
     }
 
     @DeleteMapping (value = "/Produits/{id}")
