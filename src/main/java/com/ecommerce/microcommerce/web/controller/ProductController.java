@@ -103,6 +103,13 @@ public class ProductController {
         return res;
     }
 
+    //Ordre Alphabétique
+    /*@GetMapping(value = "/ProduitsTries")
+    public List<Product>  trierProduitsParOrdreAlphabetique() {
+        Sort sort = new Sort(Sort.Direction.ASC, "nom");
+        return  ;
+    }*/
+
     @DeleteMapping (value = "/Produits/{id}")
     public void supprimerProduit(@PathVariable int id) {
 
