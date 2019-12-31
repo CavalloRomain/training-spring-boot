@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
@@ -89,6 +90,7 @@ public class ProductController {
     }
 
     //Calcul de la marge
+    @ApiOperation(value = "Calcul de la marge")
     @GetMapping(value = "/AdminProduits")
     public HashMap<String, Integer> calculerMargeProduit(){
         List<Product> Listproduits = productDao.findAll();
@@ -104,11 +106,18 @@ public class ProductController {
     }
 
     //Ordre Alphabétique
-    /*@GetMapping(value = "/ProduitsTries")
-    public List<Product>  trierProduitsParOrdreAlphabetique() {
+    @ApiOperation(value = "Produits tries par ordre alphabétique")
+    @GetMapping(value = "/ProduitsTries")
+    public MappingJacksonValue trierProduitsParOrdreAlphabetique() {
+
         Sort sort = new Sort(Sort.Direction.ASC, "nom");
-        return  ;
-    }*/
+        Iterable<Product> produits = productDao.findAll(sort);
+        SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("prixAchat");
+        FilterProvider listDeNosFiltres = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
+        MappingJacksonValue trie = new MappingJacksonValue(produits);
+        trie.setFilters(listDeNosFiltres);
+        return trie;
+    }
 
     @DeleteMapping (value = "/Produits/{id}")
     public void supprimerProduit(@PathVariable int id) {
