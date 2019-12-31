@@ -95,7 +95,8 @@ public class ProductController {
         HashMap<String, Integer> res = new HashMap<String, Integer>();
 
         for(Product product: Listproduits) {
-            int marge = product.getPrix() - product.getPrixAchat();
+            int marge = 0;
+            marge = product.getPrix() - product.getPrixAchat();
             res.put(product.toString(), marge);
         }
 
