@@ -73,7 +73,7 @@ public class ProductController {
     public ResponseEntity<Void> ajouterProduit(@Valid @RequestBody Product product) {
 
         //ProduitGratuitException si le produit coute 0 €
-        if(product.getPrix() == 0){ throw new ProduitGratuitException("Erreur, le produit est gratuit, le prix doit étre supérieur à 0");}
+        if(product.getPrix() <= 0){ throw new ProduitGratuitException("Erreur, le produit est gratuit, le prix doit étre supérieur à 0");}
 
         Product productAdded =  productDao.save(product);
 
