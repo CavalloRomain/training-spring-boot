@@ -11,6 +11,17 @@ public class MicrocommerceApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
+	}
+
+	@Test
+	public void calculerMargeProduit() {
+
+	}
+
+	@Test
+	public void trierProduitsParOrdreAlphabetique() {
+
 	}
 
 }
