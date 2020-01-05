@@ -107,7 +107,7 @@ public class ProductController {
 
     //Ordre Alphabétique
     @ApiOperation(value = "Produits tries par ordre alphabétique")
-    @GetMapping(value = "/ProduitsTries")
+    @GetMapping(value = "/ProduitsTrier")
     public MappingJacksonValue trierProduitsParOrdreAlphabetique() {
 
         Sort sort = new Sort(Sort.Direction.ASC, "nom");
