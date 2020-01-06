@@ -16,7 +16,7 @@ public class MicrocommerceApplicationTests {
 
 	@Test
 	public void calculerMargeProduit() {
-
+		
 	}
 
 	@Test
