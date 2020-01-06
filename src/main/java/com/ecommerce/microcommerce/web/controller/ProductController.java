@@ -106,7 +106,7 @@ public class ProductController {
     }
 
     //Ordre Alphabétique
-    @ApiOperation(value = "Produits tries par ordre alphabétique")
+    @ApiOperation(value = "Produits triers par ordre alphabétique")
     @GetMapping(value = "/ProduitsTrier")
     public MappingJacksonValue trierProduitsParOrdreAlphabetique() {
 
