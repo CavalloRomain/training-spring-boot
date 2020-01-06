@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -90,6 +91,7 @@ public class ProductController {
     }
 
     //Calcul de la marge
+    @Secured("ROLE_ADMIN")
     @ApiOperation(value = "Calcul de la marge")
     @GetMapping(value = "/AdminProduits")
     public HashMap<String, Integer> calculerMargeProduit(){
